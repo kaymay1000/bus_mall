@@ -11,7 +11,6 @@ function generateRandomIndex() {
   return Math.floor(Math.random() * imagesArray.length);
 };
 
-
 bag = new NewImage('Bag', 'imgs/bag.jpg');
 banana = new NewImage('Banana', 'imgs/banana.jpg');
 bathroom = new NewImage('Bathroom', 'imgs/bathroom.jpg');
@@ -39,9 +38,9 @@ generateRandomIndex();
 var images = document.getElementById('images');
 
 function generateRandomImages() {
-  var image1 = document.getElementById('image1').src = 'imgs/unicorn.jpg';
-  var image2 = document.getElementById('image2').src = 'imgs/scissors.jpg';
-  var image3 = document.getElementById('image3').src = 'imgs/sweep.png';
+  var image1 = document.getElementById('image1').src = imagesArray[generateRandomIndex()].filepath;
+  var image2 = document.getElementById('image2').src = imagesArray[generateRandomIndex()].filepath;
+  var image3 = document.getElementById('image3').src = imagesArray[generateRandomIndex()].filepath;
   images.appendChild(image1);
   images.appendChild(image2);
   images.appendChild(image3);
