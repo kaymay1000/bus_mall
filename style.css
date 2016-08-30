@@ -1,0 +1,20 @@
+html {
+  background-color: lightblue;
+}
+
+header {
+  font-size: 30px;
+  color: darkblue;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#images {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image {
+  width: 450px;
+  height: 450px;
+}
