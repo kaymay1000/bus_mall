@@ -3,7 +3,9 @@ html {
 }
 
 header {
-  font-size: 30px;
+  margin: 0px;
+  padding: 0px;
+  font-size: 35px;
   color: darkblue;
   font-family: sans-serif;
   text-align: center;
@@ -21,8 +23,6 @@ header {
 }
 
 #table {
-  border: 1px solid darkblue;
-  border-spacing: 5px;
   text-align: center;
   font-size: 18px;
 }
