@@ -11,20 +11,20 @@ header {
   text-align: center;
 }
 
+#page_title {
+  font-size: 70px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#to_do {
+  font-size: 25px;
+  font-style: italic;
+}
+
 #images {
   display: flex;
   justify-content: space-around;
-}
-
-#submit {
-  margin: 15px;
-  border-radius: 10px;
-  font-size: 15px;
-}
-
-#table {
-  text-align: center;
-  font-size: 18px;
 }
 
 .image {

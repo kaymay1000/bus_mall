@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <title></title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js'></script>
   </head>
   <body>
     <header>
-      <h1>Bus Mall</h1>
+      <p id='page_title'>Bus Mall<p>
+      <p id='to_do'>Click the product you'd most likely purchase from each image set.</p>
     </header>
     <div id="images">
       <img src="" id="image1" class="image">
       <img src="" id="image2" class="image">
       <img src="" id="image3" class="image">
     </div>
-    <button type='submit' id='submit'>View Results</button>
-    <table id="table"></table>
+    <canvas id="canvas"></canvas>
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>

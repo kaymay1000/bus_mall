@@ -67,6 +67,8 @@ var tracker = {
       for (var i = 0; i < imagesArray.length; i++) {
         if (imagesArray[i].name === event.target.name) {
           imagesArray[i].clicked++;
+          myChart.data.datasets[0].data[i] = imagesArray[i].clicked;
+          myChart.update();
         }
       }
       tracker.generateRandomImages();
@@ -82,49 +84,42 @@ var tracker = {
     leftImage = document.getElementById('image1');
     centerImage = document.getElementById('image2');
     rightImage = document.getElementById('image3');
-    submitButton = document.getElementById('submit');
     leftImage.addEventListener('click', this.clickCounter);
     centerImage.addEventListener('click', this.clickCounter);
     rightImage.addEventListener('click', this.clickCounter);
-    submitButton.addEventListener('click', this.generateTable);
-  },
-
-  tableEl: document.getElementById('table'),
-
-  generateTableHeader: function() {
-    var trEl = document.createElement('tr');
-    var emptyThEl = document.createElement('th');
-
-    emptyThEl.textContent = '';
-    trEl.appendChild(emptyThEl);
-
-    for (var i in imagesArray) {
-      var thEl = document.createElement('th');
-      thEl.textContent = imagesArray[i].name;
-      trEl.appendChild(thEl);
-    }
-    this.tableEl.appendChild(trEl);
-  },
-
-  generateTableBody: function() {
-    var trEl = document.createElement('tr');
-    var totalsTdEl = document.createElement('td');
-    totalsTdEl.textContent = 'Number of Image Clicks';
-    trEl.appendChild(totalsTdEl);
-    for (var i in imagesArray) {
-      var tdEl = document.createElement('td');
-      tdEl.textContent = imagesArray[i].clicked;
-      trEl.appendChild(tdEl);
-    }
-    this.tableEl.appendChild(trEl);
-  },
-
-  generateTable: function() {
-    tracker.generateTableHeader();
-    tracker.generateTableBody();
-    submitButton.removeEventListener('click', tracker.generateTable);
   },
 };
+
+var ctx = document.getElementById('canvas').getContext('2d');
+
+var chartData = {
+  type: 'bar',
+  data: {
+    labels: ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog Duck', 'Dragon', 'Pen', 'Pet Sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'USB', 'Water Can', 'Wine Glass'],
+    datasets: [{
+      label: 'Number of Votes',
+      data: [],
+      backgroundColor:
+        'rgba(44, 203, 252, 0.5)',
+      borderColor:
+        'darkblue',
+      borderWidth: 2,
+    }],
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          max: 10,
+          min: 0,
+          stepSize: 2,
+        }
+      }]
+    }
+  },
+};
+
+var myChart = new Chart(ctx, chartData);
 
 tracker.generateRandomImages();
 tracker.generateEventListeners();
