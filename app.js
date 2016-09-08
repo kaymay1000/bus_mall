@@ -34,28 +34,27 @@ function NewImage(name, filepath) {
   imagesArray.push(this);
 };
 
-function generateImages() {
-  new NewImage('Bag', 'imgs/bag.jpg');
-  new NewImage('Banana', 'imgs/banana.jpg');
-  new NewImage('Bathroom', 'imgs/bathroom.jpg');
-  new NewImage('Boots', 'imgs/boots.jpg');
-  new NewImage('Breakfast', 'imgs/breakfast.jpg');
-  new NewImage('Bubblegum', 'imgs/bubblegum.jpg');
-  new NewImage('Chair', 'imgs/chair.jpg');
-  new NewImage('Cthulhu', 'imgs/cthulhu.jpg');
-  new NewImage('Dog Duck', 'imgs/dog-duck.jpg');
-  new NewImage('Dragon', 'imgs/dragon.jpg');
-  new NewImage('Pen', 'imgs/pen.jpg');
-  new NewImage('Pet Sweep', 'imgs/pet-sweep.jpg');
-  new NewImage('Scissors', 'imgs/scissors.jpg');
-  new NewImage('Shark', 'imgs/shark.jpg');
-  new NewImage('Sweep', 'imgs/sweep.png');
-  new NewImage('Tauntaun', 'imgs/tauntaun.jpg');
-  new NewImage('Unicorn', 'imgs/unicorn.jpg');
-  new NewImage('USB', 'imgs/usb.gif');
-  new NewImage('Water Can', 'imgs/water-can.jpg');
-  new NewImage('Wine Glass', 'imgs/wine-glass.jpg');
-};
+new NewImage('Bag', 'imgs/bag.jpg');
+new NewImage('Banana', 'imgs/banana.jpg');
+new NewImage('Bathroom', 'imgs/bathroom.jpg');
+new NewImage('Boots', 'imgs/boots.jpg');
+new NewImage('Breakfast', 'imgs/breakfast.jpg');
+new NewImage('Bubblegum', 'imgs/bubblegum.jpg');
+new NewImage('Chair', 'imgs/chair.jpg');
+new NewImage('Cthulhu', 'imgs/cthulhu.jpg');
+new NewImage('Dog Duck', 'imgs/dog-duck.jpg');
+new NewImage('Dragon', 'imgs/dragon.jpg');
+new NewImage('Pen', 'imgs/pen.jpg');
+new NewImage('Pet Sweep', 'imgs/pet-sweep.jpg');
+new NewImage('Scissors', 'imgs/scissors.jpg');
+new NewImage('Shark', 'imgs/shark.jpg');
+new NewImage('Sweep', 'imgs/sweep.png');
+new NewImage('Tauntaun', 'imgs/tauntaun.jpg');
+new NewImage('Unicorn', 'imgs/unicorn.jpg');
+new NewImage('USB', 'imgs/usb.gif');
+new NewImage('Water Can', 'imgs/water-can.jpg');
+new NewImage('Wine Glass', 'imgs/wine-glass.jpg');
+
 
 if (localStorage.imagesArray) {
   var lsImages = JSON.parse(localStorage.getItem('imagesArray'));
@@ -69,6 +68,10 @@ if (localStorage.imagesArray) {
 };
 
 var tracker = {
+  images: document.getElementById('images'),
+  leftImage: document.getElementById('image1'),
+  centerImage: document.getElementById('image2'),
+  rightImage: document.getElementById('image3'),
 
   setLocalStorage: function() {
     localStorage.setItem('imagesArray', JSON.stringify(imagesArray));
@@ -80,8 +83,6 @@ var tracker = {
   generateRandomNum: function() {
     return Math.floor(Math.random() * imagesArray.length);
   },
-
-  images: document.getElementById('images'),
 
   generateRandomImages: function() {
     var image1 = document.getElementById('image1');
@@ -123,26 +124,21 @@ var tracker = {
       tracker.generateRandomImages();
     }
     else {
-      leftImage.removeEventListener;
-      centerImage.removeEventListener;
-      rightImage.removeEventListener;
-      // tracker.images.innerhtml = '';
+      tracker.leftImage.removeEventListener;
+      tracker.centerImage.removeEventListener;
+      tracker.rightImage.removeEventListener;
     }
   },
 
   generateEventListeners: function() {
-    leftImage = document.getElementById('image1');
-    centerImage = document.getElementById('image2');
-    rightImage = document.getElementById('image3');
-    leftImage.addEventListener('click', this.clickCounter);
-    centerImage.addEventListener('click', this.clickCounter);
-    rightImage.addEventListener('click', this.clickCounter);
+    tracker.leftImage.addEventListener('click', this.clickCounter);
+    tracker.centerImage.addEventListener('click', this.clickCounter);
+    tracker.rightImage.addEventListener('click', this.clickCounter);
   },
 };
 
 var ctx = document.getElementById('canvas').getContext('2d');
 var myChart = new Chart(ctx, chartData);
 
-generateImages();
 tracker.generateRandomImages();
 tracker.generateEventListeners();
